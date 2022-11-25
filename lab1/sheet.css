@@ -1,5 +1,5 @@
 
-*.klasa_uniwersalna{
+*.azure{
 
   /* border-width: thin; 
   border-style: solid; */
@@ -12,6 +12,9 @@
   /* margin: 10px;
   padding-left: 10px; */
 }
+
+@media screen and (min-width: 700px) and (min-height: 700px)  {
+  
 
   aside  {
     /* Specyfikacja wyglądu */
@@ -35,6 +38,28 @@
 
     position: relative;
 
+  }
+
+  aside h1{
+    margin: auto;
+    animation: transition 3s infinite alternate;
+    -webkit-animation: transition 3s infinite alternate;
+  }
+
+  @keyframes transition
+{
+  from {color: red;}
+  to {color: blue;}
+}
+
+@-webkit-keyframes transition
+{
+  from {color: red;}
+  to {color: blue;}
+}
+
+  aside h2 {
+    margin: auto;
   }
 
   footer {
@@ -62,46 +87,76 @@
     position: relative;
 
   }
+
+  body header h1 {
+    margin: auto;
+    padding: 5px;
+
+
+  }
   
   main {
     /* Specyfikacja wyglądu */
     /* margin: 20px 1000px 11px 10px; */
-    margin: 10px;
+    padding-left: 10px;
+    
+    margin: 15px 10px 10px 10px;
 
     /* float: left; */
     clear: left;
 
     width: 40%;
 
-    
+    text-align: left;
 
     /* position: relative; */
+
+  }
+
+  main h1 {
+    margin: 10px 10px 10px 0px;
+  }
+
+  main blockquote{
+
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 14px;
+
+    margin-left: 0px;
+
+    text-align: left;
+
+    /* white-space: pre-line; */
 
 
   }
 
   nav {
     /* Specyfikacja wyglądu */
-    margin: 10px;
+
     /* padding-top: 10px; */
     /* padding-bottom: 10px;
     padding-right: 10px; */
 
-    position: relative;
+    /* position: relative; */
 
 
   }
 
   nav ul {
     /* Specyfikacja wyglądu */
+    margin: 10px 10px 20px 10px;
+
     padding-top: 25px;
     padding-bottom: 25px;
-    padding-right: 10px;
-
+    padding-right: 8px;
 
     text-align: right;
 
     float: left;
+
+    width: 10%;
     
 
   }
@@ -114,4 +169,4 @@
   }
 
 
-
+}
