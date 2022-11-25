@@ -1,0 +1,117 @@
+
+*.klasa_uniwersalna{
+
+  /* border-width: thin; 
+  border-style: solid; */
+  border: thin solid black;
+  /* outline: thin solid black; */
+  /* outline-offset: 10px; */
+  /* box-decoration-break: clone; */
+  box-shadow: 0 0 8px rgb(85, 151, 173);
+  background-color: rgb(238, 254, 255);
+  /* margin: 10px;
+  padding-left: 10px; */
+}
+
+  aside  {
+    /* Specyfikacja wyglądu */
+
+    /* position: relative; right: 20px; */
+
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-top: 3px;
+    padding-right: 8px;
+
+    text-align: left;
+
+
+    /* margin: 20px 10px 20px 1200px; */
+    margin: 10px;
+    
+    float: right;
+
+    width: 50%;
+
+    position: relative;
+
+  }
+
+  footer {
+    /* Specyfikacja wyglądu */
+
+    /* position: relative; bottom: 0px; */
+    padding-top: 11px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+
+    margin: 13px 10px 10px 10px;
+
+    position: static;
+
+  }
+
+  header {
+    /* Specyfikacja wyglądu */
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+
+    margin: 10px;
+
+    position: relative;
+
+  }
+  
+  main {
+    /* Specyfikacja wyglądu */
+    /* margin: 20px 1000px 11px 10px; */
+    margin: 10px;
+
+    /* float: left; */
+    clear: left;
+
+    width: 40%;
+
+    
+
+    /* position: relative; */
+
+
+  }
+
+  nav {
+    /* Specyfikacja wyglądu */
+    margin: 10px;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px;
+    padding-right: 10px; */
+
+    position: relative;
+
+
+  }
+
+  nav ul {
+    /* Specyfikacja wyglądu */
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 10px;
+
+
+    text-align: right;
+
+    float: left;
+    
+
+  }
+
+  nav li {
+    /* Specyfikacja wyglądu */
+
+    /* justify-content: right; */
+
+  }
+
+
+
