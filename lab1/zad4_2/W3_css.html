@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Zmień wartość "lang" z 'en' na 'pl' -->
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"
+        href="animations.css"
+        media="screen"
+        type="text/css">
+    <link rel="stylesheet"
+          href="https://www.w3schools.com/w3css/4/w3.css"><!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <title>
+      Wypożyczalnia samochodów
+    </title>
+  </head>
+  <body>
+
+    <header class="w3-display-container w3-border w3-amber w3-padding w3-container w3-cell-row w3-border-amber w3-large">
+      <div>
+        <div class="w3-left"><i class="fa fa-car w3-xxlarge"></i></div>
+      
+        <div class="w3-right"><button class="w3-border w3-round w3-padding w3-right w3-border-black w3-amber">Szukaj</button></div>
+        <div class="w3-right w3-margin-right"><input class="w3-input w3-right w3-round w3-margin-right " type="Szukaj"></div>
+        
+
+        <div class="w3-dropdown-click w3-right w3-margin-right">
+          <button onclick="myFunction()" class="w3-button w3-margin-right">Pojazdy</button>
+          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border w3-margin-right w3-round w3-border-grey">
+            <a class="w3-bar-item w3-button">Samochody</a>
+            <a class="w3-bar-item w3-button">Przyczepy</a>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+
+
+
+    <!-- <div class="w3-container w3-content w3-mobile"> -->
+    <div class="w3-row-padding w3-section w3-margin w3-mobile">
+
+
+      <!-- <div class="w3-row"> -->
+
+        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%">
+
+          <img src="fiat_tipo.jpg" alt="Fiat Tipo" style="width:100%">
+          <div class="w3-container">
+            <h4 class="w3-border-bottom"><b>Fiat Tipo</b></h4>
+          </div>
+          <ul>
+            <li>
+              <a>Przebieg: 2km (do sklepu i z powrotem)</a>
+            </li>
+            <li>
+              <a>Rok produkcji: 2015</a>
+            </li>
+          </ul>
+        </div>
+  
+  
+        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%">
+  
+          <img src="fiat500.jpg" alt="Fiat 500" style="width:100%">
+          <div class="w3-container">
+            <h4 class="w3-border-bottom"><b>Fiat 500</b></h4>
+          </div>
+          <ul>
+            <li>
+              <a>Przebieg: 13km</a>
+            </li>
+            <li>
+              <a>Rok produkcji: 1975</a>
+            </li>
+          </ul>
+        </div>
+
+      <!-- </div> -->
+
+    </div>
+    
+
+    <!-- <div class="w3-container w3-content w3-mobile"> -->
+    <div class="w3-row-padding w3-section w3-margin w3-mobile">
+
+      <!-- <div class="w3-row"> -->
+
+        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%">
+
+          <img src="przyczepa_jedn.jpg" alt="Przyczepa jednoosiowa" style="width:100%">
+          <div class="w3-container">
+            <h4 class="w3-border-bottom"><b>Przyczepa jednoosiowa</b></h4>
+          </div>
+          <ul>
+            <li>
+              <a>Ładowność: 700</a>
+            </li>
+            <li>
+              <a>Wymiary produktu: 201 x 106 x 30 cm </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%">
+  
+          <img src="przyczepa.jpg" alt="Przyczepa samochodowa" style="width:100%">
+          <div class="w3-container">
+            <h4 class="w3-border-bottom"><b>Przyczepa samochodowa</b></h4>
+          </div>
+          <ul>
+            <li>
+              <a>Ładowność: 750 kg</a>
+            </li>
+            <li>
+              <a>Wymiary produktu: 264 x 126 x 30 cm</a>
+            </li>
+          </ul>
+        </div>
+
+      <!-- </div> -->
+
+    </div>
+
+
+
+  
+    <footer class="w3-bottom w3-border w3-border-light-green w3-light-green">
+      <a class="w3-text-white w3-margin">AGH Company </a>
+    </footer>
+    <!-- Umieść tutaj treść elementu 'body' z zadania 1 -->
+    <!-- Put here the contents of the 'body' element from exercise 1 -->
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("Demo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else { 
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+      </script>
+
+  </body>
+</html>

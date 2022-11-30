@@ -1,0 +1,25 @@
+
+*.rotation:hover{
+    animation: rotate 2s infinite;
+    -webkit-animation: rotate 2s infinite;
+    background-color: white;
+}
+
+
+@keyframes rotate{
+    0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate{
+    0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
