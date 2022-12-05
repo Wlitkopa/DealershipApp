@@ -52,3 +52,7 @@
     transform: rotateX(360deg);
   }
 }
+
+<div>
+<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-border w3-border-black w3-round w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+</div>
