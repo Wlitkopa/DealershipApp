@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Page title
+    </title>
+
+  </head>
+  <body>
+    <main>
+      <h1>
+        Płótno
+      </h1>
+
+      <h1>
+        Canvas
+      </h1>
+
+      <canvas id="canvas"
+              width="200"
+              height="300"
+              style="border:1px solid #000000;">
+        Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not support the "canvas" element
+      </canvas>
+
+
+      <script>
+        var e = document.getElementById('canvas');
+        var c = canvas.getContext('2d');
+
+        c.globalCompositeOperation = 'xor';
+     
+
+        c.lineWidth = 8;
+        // c.strokeStyle='#353433';
+        c.fillStyle='#fffed6';
+        c.fillRect(0, 0, 640, 480);
+        c.beginPath();
+
+        c.lineWidth = 3; 
+        c.strokeStyle='#55fa47';
+        c.fillStyle='#7d97ff';
+        c.arc(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6, e.height/8, 0 * Math.PI, 2 * Math.PI, false);
+        c.fill();
+        c.stroke();
+
+        c.beginPath();
+        c.lineWidth = 3; 
+        c.strokeStyle='#7de7ff';
+        c.fillStyle='#7d97ff';
+        c.arc(e.width / 2 -  e.width / 7, e.height / 2 + e.height / 6, e.height/8, 0 * Math.PI, 2 * Math.PI, false);
+        c.fill();
+        c.stroke();
+
+        c.beginPath();
+        c.lineWidth = 3; 
+        c.strokeStyle='#ff8d7d';
+        c.fillStyle='#7d97ff';
+        c.arc(e.width / 2, e.height / 2, e.height/8, 0 * Math.PI, 2 * Math.PI, false);
+        c.fill();
+        c.stroke();
+
+        c.beginPath();
+        c.lineWidth = 3; 
+        c.strokeStyle='#7d97ff';
+        c.fillStyle='#7d97ff';
+        c.arc(e.width / 2, e.height / 2 + e.height / 9, e.height/12, 0 * Math.PI, 2 * Math.PI, false);
+        c.fill();
+        c.stroke();
+
+
+
+        c.beginPath();
+        c.moveTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6);
+        c.lineTo(e.width / 2 -  e.width / 7, e.height / 2 + e.height / 6);
+        c.stroke();
+        c.beginPath();
+        c.moveTo(e.width / 2 - e.width / 7, e.height / 2 + e.height / 6);
+        c.lineTo(e.width / 2, e.height / 2);
+        c.stroke();
+        c.beginPath();
+        c.moveTo(e.width / 2, e.height / 2);
+        c.lineTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6 );
+        c.stroke();
+
+        c.beginPath();
+        c.moveTo(e.width / 2, e.height / 2);
+        c.lineTo(e.width / 2 + e.width / 7 + 5, e.height / 2 +  e.height/23);
+        c.strokeStyle='#ff8d7d';
+        c.stroke();
+        c.beginPath();
+        c.moveTo(e.width / 2, e.height / 2);
+        c.lineTo(e.width / 2 - e.width / 7 - 5, e.height / 2 +  e.height/23);
+        c.stroke();
+
+        c.beginPath();
+        c.moveTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6);
+        c.lineTo(e.width / 2 + e.width / 7 + 5, e.height / 2 +  e.height/23);
+        c.strokeStyle='#55fa47';
+        c.stroke();
+        c.beginPath();
+        c.moveTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6);
+        c.lineTo(e.width / 2,  e.height / 2 + e.height / 6 + e.height / 16 + 4);
+        c.stroke();
+
+        c.beginPath();
+        c.moveTo(e.width / 2 - e.width / 7, e.height / 2 + e.height / 6);
+        c.lineTo(e.width / 2 - e.width / 7 - 5, e.height / 2 +  e.height/23);
+        c.strokeStyle='#7de7ff';
+        c.stroke();
+        c.beginPath();
+        c.moveTo(e.width / 2 - e.width / 7, e.height / 2 + e.height / 6);
+        c.lineTo(e.width / 2,  e.height / 2 + e.height / 6 + e.height / 16 + 4);
+        c.stroke();
+        
+
+
+        // c.beginPath();
+        // c.lineWidth = 3;
+        // c.strokeStyle='#7d97ff';
+        // c.fillStyle='#7d97ff';
+        // c.moveTo(e.width / 2 + e.width / 5, e.height / 2 + e.height / 6);
+        // c.quadraticCurveTo(e.width/2, e.height/2 + e.height/3, e.width / 2 - e.width / 5, e.height / 2 + e.height / 6);
+        // c.stroke();
+
+        // c.beginPath();
+        // c.lineWidth = 1;
+        // c.strokeStyle='#7d97ff';
+        // c.fillStyle='#7d97ff';
+        // var r = 0;
+        // var angle = 0;
+        // c.moveTo(e.width / 2, e.height / 2 + e.height / 9);
+        // for(var i = 0; i < 450; i++){
+        //     r = r + 0.2;
+        //     angle = angle + (Math.PI * 2) / 100;
+        //     var x = e.width/2+r*Math.cos(angle);
+        //     var y =  e.height / 2 + e.height / 9 + r * Math.sin(angle);
+        //     c.lineTo(x,y);
+        // }
+        // c.stroke();
+
+
+
+        // c.beginPath();
+        // c.lineWidth = 8;
+        // c.strokeStyle='#353433';
+        // c.fillStyle='#e1e2e3';
+        // c.fillRect(0, 0, 640, 480);
+        // c.strokeStyle='#333';
+        // c.fillStyle='#4444aa';
+        // c.rect(e.width/4+e.width/16,e.height/4+e.height/16,e.width/2/2,e.height/2/2);
+        // c.fill();
+        // c.fillStyle='#44aa44';
+        // c.beginPath();
+        // c.rect(e.width/4*2-e.width/16,e.height/4*2-e.height/16,e.width/2/2,e.height/2/2);
+        // c.fill();
+
+    </script>
+
+    </main>
+  </body>
+</html>

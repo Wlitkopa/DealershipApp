@@ -1,0 +1,56 @@
+
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.margin{
+    margin: 5px;
+}
+
+
+.menu_border{
+
+border: thin solid gray;
+border-radius: 5px;
+background-color: white;
+padding: 10px;
+}
+
+
+*.yellow{
+    border: thin solid rgb(231, 188, 47);
+    background-color: rgb(255, 219, 59);
+}
+
+header div a{
+    float: left;
+    clear: both;
+}
+
+.header_div{
+    display: flex;
+    flex-direction: row;
+}
+
+header details{
+    margin-right: 10px;
+}
+
+/* button{
+    background-color: rgb(255, 219, 59);
+} */
+
+main {
+
+    clear: both;
+    position: static;
+}
+
+
+
+/* collapsion the navigation bar */
