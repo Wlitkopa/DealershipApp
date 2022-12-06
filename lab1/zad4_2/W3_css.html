@@ -20,7 +20,7 @@
       Wypożyczalnia samochodów
     </title>
   </head>
-  <body>
+  <body style="position: relative;">
 
     <header class="w3-display-container w3-border w3-amber w3-padding w3-container w3-cell-row w3-border-amber w3-large">
       <div>
@@ -31,8 +31,8 @@
         
 
         <div class="w3-dropdown-click w3-right w3-margin-right">
-          <button onclick="myFunction()" class="w3-button w3-margin-right  w3-hide-small">Pojazdy</button>
-          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border w3-margin-right w3-round w3-border-grey  w3-hide-small">
+          <button onclick="myFunction()" class="w3-button w3-margin-right w3-hide-small"><i class="fa fa-caret-down"></i>&nbsp;&nbsp; Pojazdy</button>
+          <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border w3-margin-right w3-round w3-border-grey w3-hide-small">
             <a class="w3-bar-item w3-button">Samochody</a>
             <a class="w3-bar-item w3-button">Przyczepy</a>
           </div>
@@ -49,12 +49,11 @@
 
 
     <!-- <div class="w3-container w3-content w3-mobile"> -->
-    <div class="w3-row-padding w3-section w3-margin w3-mobile">
+    <div class="row w3-section w3-margin w3-mobile" style="width:50%;">
 
+      <div class="row">
 
-      <!-- <div class="w3-row"> -->
-
-        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%">
+        <div class="column w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%; position: absolute; left: 10%;">
 
           <img src="fiat_tipo.jpg" alt="Fiat Tipo" style="width:100%">
           <div class="w3-container">
@@ -71,14 +70,14 @@
         </div>
   
   
-        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%">
+        <div class="column w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%">
   
           <img src="fiat500.jpg" alt="Fiat 500" style="width:100%">
           <div class="w3-container">
             <h4 class="w3-border-bottom"><b>Fiat 500</b></h4>
           </div>
           <ul>
-            <li>
+            <li>bottom
               <a>Przebieg: 13km</a>
             </li>
             <li>
@@ -87,17 +86,17 @@
           </ul>
         </div>
 
-      <!-- </div> -->
+      </div>
 
     </div>
     
 
     <!-- <div class="w3-container w3-content w3-mobile"> -->
-    <div class="w3-row-padding w3-section w3-margin w3-mobile">
+    <div class="row w3-row-padding w3-section w3-margin w3-mobile">
 
       <!-- <div class="w3-row"> -->
 
-        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%">
+        <div class="row w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%">
 
           <img src="przyczepa_jedn.jpg" alt="Przyczepa jednoosiowa" style="width:100%">
           <div class="w3-container">
@@ -113,7 +112,7 @@
           </ul>
         </div>
   
-        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%">
+        <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%;">
   
           <img src="przyczepa.jpg" alt="Przyczepa samochodowa" style="width:100%">
           <div class="w3-container">
@@ -136,7 +135,7 @@
 
 
   
-    <footer class="w3-border w3-border-light-green w3-light-green">
+    <footer class="w3-bottom w3-border w3-border-light-green w3-light-green">
       <a class="w3-text-white w3-margin">AGH Company </a>
     </footer>
     <!-- Umieść tutaj treść elementu 'body' z zadania 1 -->
