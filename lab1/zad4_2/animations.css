@@ -13,6 +13,22 @@
 
 }
 
+.dropdown { 
+
+  animation: slow_down 1s linear;
+  -webkit-animation: slow_down 1s linear;
+  display: none;
+
+}
+
+.dropdown:click .dropdown-menu--animated{
+  display: block;
+}
+
+.dropdown_menu-1{
+  animation: growDown 10s ease-in-out forwards;
+}
+
 
 
 @keyframes rotate{
