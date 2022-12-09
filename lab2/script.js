@@ -5,7 +5,7 @@ var paragraph = document.getElementById('paragraph');
 
 
 button.onclick = function(){
-    paragraph.innerHTML += document.forms[0].elements[0].value + ' ' +  document.forms[0].elements[0].type + '<br />';
+    paragraph.innerHTML += document.forms[0].elements[0].value + ' ' +  document.forms[0].elements[0].value.typeof + '<br />';
     paragraph.innerHTML += document.forms[0].elements[1].value + ' ' + document.forms[0].elements[1].type + '<br />';
 };
 

@@ -1,0 +1,196 @@
+
+*.azure{
+
+  /* border-width: thin; 
+  border-style: solid; */
+  border: thin solid black;
+  /* outline: thin solid black; */
+  /* outline-offset: 10px; */
+  /* box-decoration-break: clone; */
+  box-shadow: 0 0 8px rgb(85, 151, 173);
+  background-color: rgb(238, 254, 255);
+  /* margin: 10px;
+  padding-left: 10px; */
+}
+
+@media screen and (min-width: 700px) and (min-height: 700px)  {
+  
+
+  aside  {
+    /* Specyfikacja wyglądu */
+
+    /* position: relative; right: 20px; */
+
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-top: 3px;
+    padding-right: 8px;
+
+    text-align: left;
+
+
+    /* margin: 20px 10px 20px 1200px; */
+    margin: 10px;
+    
+    float: right;
+
+    width: 50%;
+
+    position: relative;
+
+  }
+
+  aside h1{
+    margin: auto;
+    animation: transition 3s infinite alternate;
+    -webkit-animation: transition 3s infinite alternate;
+  }
+  
+  @keyframes transition
+  {
+    from {color: red;}
+    to {color: blue;}
+  }
+  
+  @-webkit-keyframes transition
+  {
+    from {color: red;}
+    to {color: blue;}
+  }
+
+  aside h2 {
+    margin: auto;
+  }
+
+  footer {
+    /* Specyfikacja wyglądu */
+
+    /* position: relative; bottom: 0px; */
+    padding-top: 11px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+
+    margin: 13px 10px 10px 10px;
+
+    /* position: static; */
+    clear: both;
+
+  }
+
+  header {
+    /* Specyfikacja wyglądu */
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+
+    margin: 10px;
+
+    position: relative;
+
+  }
+
+  body header h1 {
+    margin: auto;
+    padding: 5px;
+
+
+  }
+  
+  main {
+    /* Specyfikacja wyglądu */
+    /* margin: 20px 1000px 11px 10px; */
+    padding-left: 10px;
+    
+    margin: 15px 10px 10px 10px;
+
+    /* float: left; */
+    clear: left;
+
+    width: 40%;
+
+    text-align: left;
+
+    /* position: relative; */
+
+  }
+
+  main h1 {
+    margin: 10px 10px 10px 0px;
+  }
+
+  main blockquote{
+
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 14px;
+
+    margin-left: 0px;
+
+    text-align: left;
+
+    /* white-space: pre-line; */
+
+
+  }
+
+  nav {
+    /* Specyfikacja wyglądu */
+
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px;
+    padding-right: 10px; */
+
+    /* position: relative; */
+
+
+  }
+
+  nav ul {
+    /* Specyfikacja wyglądu */
+    margin: 10px 10px 20px 10px;
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 8px;
+
+    text-align: right;
+
+    float: left;
+
+    width: 10%;
+    
+
+  }
+
+  nav li {
+    /* Specyfikacja wyglądu */
+
+    /* justify-content: right; */
+
+  }
+
+
+}
+
+aside h1{
+  margin: auto;
+  animation: transition 3s infinite alternate;
+  -webkit-animation: transition 3s infinite alternate;
+}
+
+@keyframes transition
+{
+  from {color: red;}
+  to {color: blue;}
+}
+
+@-webkit-keyframes transition
+{
+  from {color: red;}
+  to {color: blue;}
+}
+
+
+
+
+
