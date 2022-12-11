@@ -1,5 +1,17 @@
 
 
+onmessage = function(e) {
+    console.log('Worker: Message received from main script');
+
+    let temp_cnt = e.data[0] - 1
+    let iter = e.data[1] += 1
+    const workerResult = [temp_cnt, iter];
+    console.log('Worker: Posting message back to main script');
+    postMessage(workerResult);
+    
+  }
+
+
 
 // self.addEventListener("message", run);
 
@@ -25,18 +37,3 @@
 //     return [temp_cnt, iter]
 
 // }
-
-
-
-
-onmessage = function(e) {
-    console.log('Worker: Message received from main script');
-
-    let temp_cnt = e.data[0] - 1
-    let iter = e.data[1] += 1
-    const workerResult = [temp_cnt, iter];
-    console.log('Worker: Posting message back to main script');
-    postMessage(workerResult);
-    
-  }
-
