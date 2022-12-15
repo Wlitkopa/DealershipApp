@@ -13,9 +13,134 @@ var magazyn = [
 
 var bougth = new Array;
 var rented = new Array;
+var cur_user = new Array;
+var datawz_ar = new Array;
+var user = document.getElementById('user')
+var datawz = document.getElementById('datawz')
+
+
+function actualizeAccessable(){
+    for (let i=0; i<magazyn.length; i++){
+        let cur_id = magazyn[i][0] + "_sztuki"
+        var car_sztuki = document.getElementById(cur_id)
+        car_sztuki.childNodes[0].textContent = magazyn[i][1]
+        if (magazyn[i][1] == 0){
+            car_sztuki.parentNode.style.backgroundColor = "orange" 
+        }
+        else{
+            car_sztuki.parentNode.style.backgroundColor = "white" 
+        }
+    }
+}
+actualizeAccessable()
+
+
+function addCar(){
+    let new_car = new Array;
+    let new_car_prompt = prompt("car amount sell_cost rent_cost_per_day img_url");
+    new_car = new_car_prompt.split(' ')
+    magazyn.push(new_car)
+
+
+//     <div id="Fiat_500_div">
+//       <img id="Fiat_500_img" src="fiat500.jpg" alt="Fiat 500" style="width:20%">
+//       <a>Fiat_500</a>
+//       <a id="Fiat_500_sztuki">Ilość sztuk: </a>
+//     </div>
+
+    let demo1 = document.getElementById('Demo1')
+    let fragment = document.createDocumentFragment();
+
+    let div = document.createElement('div')
+    let fragment2 = document.createDocumentFragment();
+    let a = document.createElement('a')
+    a.textContent = new_car[0]
+    a.setAttribute('style', 'margin-right: 5px;')
+    // a.style = "margin: "
+    let img = document.createElement('img')
+    newid = new_car[0] + '_img'
+    img.setAttribute('id', newid)
+    img.setAttribute('src', new_car[4])
+    img.setAttribute('alt', new_car[0])
+    img.setAttribute('style', 'width: 20%; margin-right: 5px;')
+    img.addEventListener('click', function(e){
+        e.stopPropagation
+        sell(['sell', new_car[0], cur_user[0], cur_user[1]])
+    })
+    let a2 = document.createElement('a')
+    newid = new_car[0] + '_sztuki'
+    a2.setAttribute('id', newid)
+    a2.textContent = 'Ilość sztuk: '
+    a2.addEventListener('click', function(e){
+        e.stopPropagation
+        rent(['rent', new_car[0], cur_user[0], cur_user[1], datawz_ar[0], datawz_ar[1]])
+    })
+    
+
+    fragment2.appendChild(img)
+    fragment2.appendChild(a)
+    fragment2.appendChild(a2)
+
+    div.appendChild(fragment2)
+    fragment.appendChild(div)
+    demo1.appendChild(fragment)
+
+    actualizeAccessable()
+    build_chart()
+
+    // Gran_torino 4 2000 400 gran_torino.jpg
+
+
+}
+
+
+function actualizeSold(marka){
+    let counter = 0
+
+    for (let i=0; i<bougth.length; i++){
+        if (marka == bougth[i][2]){
+            counter += 1
+        }
+    }
+
+    let cur_id = marka + "_sold"
+    // console.log("cur_id: " + cur_id)
+    var car_sztuki = document.getElementById(cur_id)
+    car_sztuki.childNodes[0].textContent = counter
+}
+
+
+function actualizeRented(marka){
+
+    // rented.push([imie, nazwisko, marka, dataw, dataz, koszt, today])
+
+    let counter = 0
+
+    for (let i=0; i<rented.length; i++){
+        if (marka == rented[i][2]){
+            counter += 1
+        }
+    }
+
+    let cur_id = marka + "_rented"
+    // console.log("cur_id: " + cur_id)
+    var car_sztuki = document.getElementById(cur_id)
+    car_sztuki.childNodes[0].textContent = counter
+}
 
 
 
+function sztuki(marka, id){
+    var car_sztuki = document.getElementById(id)
+    for (let i=0; i<magazyn.length; i++){
+        if (magazyn[i][0] == marka){
+            car_sztuki.innerHTML += magazyn[i][1]
+            return
+        }
+    }
+}
+
+    
 function wykonaj(){
 
     var commands = document.forms[0].elements[0].value.split('\n');
@@ -72,7 +197,6 @@ function wykonaj(){
 }
 
 
-
 function sell(command){
 
     // rent ford Alicja Kaczka 20-11-2003 25-11-2003
@@ -83,6 +207,11 @@ function sell(command){
     let nazwisko = command[3]
     let marka = command[1]
     let msc = 0
+
+    if (imie == undefined || nazwisko == undefined){
+        console.log("Enter the username data")
+        return
+    }
 
     
     if (availability(marka, 1) == 1){
@@ -115,15 +244,32 @@ function sell(command){
     }
 
     build_chart()
+    // actualizeSold(marka)
+    actualizeAccessable()
+
+    let users = document.getElementById('Demo2')
+    let fragment = document.createDocumentFragment();
+
+    let div = document.createElement('div')
+    div.style = "border: thin solid black; padding: 2px; margin: 2px;"
+    let fragment2 = document.createDocumentFragment();
+    let a = document.createElement('a')
+    a.textContent = imie + ' ' + nazwisko + ' kupił(a): ' + marka
+
+
+    fragment2.appendChild(a)
+    div.appendChild(fragment2)
+    
+    fragment.appendChild(div)
+    users.appendChild(fragment)
+
     console.log("===============")
-
-
 }
 
 
 function rent(command){
 
-        // rent ford Alicja Kaczka 20-11-2003 25-11-2003
+    // rent ford Alicja Kaczka 20-11-2003 25-11-2003
 
     console.log("DZIAŁA RENT =============")
 
@@ -137,6 +283,11 @@ function rent(command){
     let dniw = 0
     let dniz = 0
     let dni = 0
+
+    if (imie == undefined || nazwisko == undefined){
+        console.log("Enter the username data")
+        return
+    }
 
 
     a_w = dataw.split('-')
@@ -223,9 +374,31 @@ function rent(command){
     }
 
 
-
-
     build_chart()
+    // actualizeRented(marka)
+    actualizeAccessable()
+
+
+    let users = document.getElementById('Demo3')
+    let fragment = document.createDocumentFragment();
+
+    let div = document.createElement('div')
+    div.style = "border: thin solid black; padding: 2px; margin: 2px;"
+    let fragment2 = document.createDocumentFragment();
+    let a = document.createElement('a')
+    a.textContent = imie + ' ' + nazwisko + ' wypożyczył(a): ' + marka
+
+    fragment2.appendChild(a)
+    div.appendChild(fragment2)
+
+    div.addEventListener('click', function(){
+        retur(['retur', marka, imie, nazwisko, dataw, dataz])
+        div.parentNode.removeChild(div)
+    })
+
+    fragment.appendChild(div)
+    users.appendChild(fragment)
+
     console.log("===============")
 
 }
@@ -238,6 +411,7 @@ function retur(command){
 
     console.log("DZIAŁA RETUR =============")
     let marka = command[1]
+    console.log("marka: ", marka)
     let imie = command[2]
     let nazwisko = command[3]
     let msc = 0
@@ -250,7 +424,11 @@ function retur(command){
     for (let i=0; i < magazyn.length; i++){
         if (magazyn[i][0] == marka){
             console.log(magazyn[i])
+            console.log("WYBRANO MIEJSCE Z MAGAZYNU")
             msc = i
+            console.log("msc: " + msc)
+            console.log("marka: " + marka)
+
             break
         }
     }
@@ -266,7 +444,6 @@ function retur(command){
             rented.pop(i)
             console.log("Rented po popie:" )
             console.log(rented)
-            msc = i
             break
         }
         else if (i == (rented.length - 1)){
@@ -287,9 +464,82 @@ function retur(command){
 
 
     build_chart()
+    actualizeAccessable()
+
     console.log("===============")
 
 }
+
+
+user.addEventListener("keydown", function(e) {
+    if (e.code === "Enter") {
+        cur_user = user.value.split(' ')
+        console.log("cur_user: " + cur_user)
+    }
+});
+
+datawz.addEventListener("keydown", function(e) {
+    if (e.code === "Enter") {
+        datawz_ar = datawz.value.split(' ')
+        console.log("datawz_ar: " + datawz_ar)
+    }
+});
+
+
+
+var Fiat_Tipo_img = document.getElementById('Fiat_Tipo_img')  // img Fiat_Tipo
+Fiat_Tipo_img.addEventListener('click', function(e){
+    e.stopPropagation
+    sell(['sell', 'Fiat_Tipo', cur_user[0], cur_user[1]])
+})
+
+var Fiat_500_img = document.getElementById('Fiat_500_img') // img Fiat_500
+Fiat_500_img.addEventListener('click', function(e){
+    e.stopPropagation
+    sell(['sell', 'Fiat_500', cur_user[0], cur_user[1]])
+})
+var Przyczepa_jednoosiowa_img = document.getElementById('Przyczepa_jednoosiowa_img') // img Przyczepa_jednoosiowa
+Przyczepa_jednoosiowa_img.addEventListener('click', function(e){
+    e.stopPropagation
+    sell(['sell', 'Przyczepa_jednoosiowa', cur_user[0], cur_user[1]])
+})
+var Przyczepa_samochodowa_img = document.getElementById('Przyczepa_samochodowa_img') // img Przyczepa_samochodowa
+Przyczepa_samochodowa_img.addEventListener('click', function(e){
+    e.stopPropagation
+    sell(['sell', 'Przyczepa_samochodowa', cur_user[0], cur_user[1]])
+})
+
+
+
+
+
+var Fiat_Tipo_sztuki = document.getElementById('Fiat_Tipo_sztuki')  // img Fiat_Tipo
+Fiat_Tipo_sztuki.addEventListener('click', function(e){
+    e.stopPropagation
+    rent(['rent', 'Fiat_Tipo', cur_user[0], cur_user[1], datawz_ar[0], datawz_ar[1]])
+})
+
+var Fiat_500_sztuki = document.getElementById('Fiat_500_sztuki') // img Fiat_500
+Fiat_500_sztuki.addEventListener('click', function(e){
+    e.stopPropagation
+    rent(['rent', 'Fiat_500', cur_user[0], cur_user[1], datawz_ar[0], datawz_ar[1]])
+})
+var Przyczepa_jednoosiowa_sztuki = document.getElementById('Przyczepa_jednoosiowa_sztuki') // img Przyczepa_jednoosiowa
+Przyczepa_jednoosiowa_sztuki.addEventListener('click', function(e){
+    e.stopPropagation
+    rent(['rent', 'Przyczepa_jednoosiowa', cur_user[0], cur_user[1], datawz_ar[0], datawz_ar[1]])
+})
+var Przyczepa_samochodowa_sztuki = document.getElementById('Przyczepa_samochodowa_sztuki') // img Przyczepa_samochodowa
+Przyczepa_samochodowa_sztuki.addEventListener('click', function(e){
+    e.stopPropagation
+    rent(['rent', 'Przyczepa_samochodowa', cur_user[0], cur_user[1], datawz_ar[0], datawz_ar[1]])
+})
+
+var logo = document.getElementById('logo')
+logo.addEventListener('dblclick', function(){
+    addCar()
+})
+
 
 
 function availability(marka, cmd){
@@ -329,8 +579,36 @@ function availability(marka, cmd){
 }
 
 
+function removeAllText(element) {
 
-// CANVAS
+    // loop through all the nodes of the element
+    var nodes = element.childNodes;
+
+    for(var i = 0; i < nodes.length; i++) {
+
+        var node = nodes[i];
+
+        // if it's a text node, remove it
+        if(node.nodeType == Node.TEXT_NODE) {
+
+            node.parentNode.removeChild(node);
+
+
+            i--; // have to update our incrementor since we just removed a node from childNodes
+
+        } else
+
+        // if it's an element, repeat this process
+        if(node.nodeType == Node.ELEMENT_NODE) {
+
+            removeAllText(node);
+
+        }
+    }
+}
+
+
+// CANVAS   
 
 
 build_chart()
@@ -473,4 +751,12 @@ function build_chart(){
 
     console.log("===================")
 }
+
+
+
+
+
+
+
+
 
