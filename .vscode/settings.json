@@ -1,0 +1,4 @@
+{
+    "mocha.nycPath": "/home/przemek/VSCodeProjects/HTMLProjects/ps_html/cw4/node_modules/nyc",
+    "mocha.files.glob": "/home/przemek/VSCodeProjects/HTMLProjects/ps_html/cw4/test/test.js"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "cw4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "nyc npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "devDependencies": {
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "esm": "^3.2.25",
+    "nyc": "^15.1.0",
+    "supertest": "^6.3.3"
+  }
+}

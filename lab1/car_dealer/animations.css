@@ -29,6 +29,13 @@
   animation: growDown 10s ease-in-out forwards;
 }
 
+.rotation{
+  animation: rotate 5s linear infinite forwards;
+  -webkit-animation: rotate 5s linear infinite forwards;
+  background-color: white;
+  animation-play-state: paused;
+
+}
 
 
 @keyframes rotate{
@@ -69,6 +76,9 @@
   }
 }
 
-<div>
+
+
+
+/* <div>
 <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-border w3-border-black w3-round w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
-</div>
+</div> */

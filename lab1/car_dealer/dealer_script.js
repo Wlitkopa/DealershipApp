@@ -537,6 +537,7 @@ Przyczepa_samochodowa_sztuki.addEventListener('click', function(e){
 
 var logo = document.getElementById('logo')
 logo.addEventListener('dblclick', function(){
+    window.requestAnimationFrame(logoAnimation)
     addCar()
 })
 
@@ -605,6 +606,31 @@ function removeAllText(element) {
 
         }
     }
+}
+
+
+// LOGO ANIMATION
+
+function logoAnimation(){
+
+    let logo = document.getElementById('logo')
+
+    const logoSpinning = [
+        { transform: 'rotateY(0) scale(1)' },
+        { transform: 'rotateY(360deg) scale(0)' }
+      ];
+
+
+    const logoTiming = {
+    duration: 4000,
+    iterations: 1,
+    }
+
+    logo.animate(logoSpinning, logoTiming)
+
+
+
+
 }
 
 
