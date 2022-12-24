@@ -1,0 +1,4 @@
+Fiat_Tipo 1 5000 100 http://127.0.0.1:5500/lab5/obrazy/car_dealer/fiat_tipo.jpg
+Fiat_500 3 2000 300 http://127.0.0.1:5500/lab5/obrazy/fiat500.jpg
+Przyczepa_jednoosiowa 5 2500 200 http://127.0.0.1:5500/lab5/obrazy/przyczepa_jedn.jpg
+Przyczepa_samochodowa 4 1500 500 http://127.0.0.1:5500/lab5/obrazy/przyczepa.jpg
