@@ -90,7 +90,6 @@ function addCar(){
 
     // Gran_torino 4 2000 400 gran_torino.jpg
 
-
 }
 
 
@@ -535,7 +534,7 @@ Przyczepa_samochodowa_sztuki.addEventListener('click', function(e){
     rent(['rent', 'Przyczepa_samochodowa', cur_user[0], cur_user[1], datawz_ar[0], datawz_ar[1]])
 })
 
-var logo = document.getElementById('logo')
+var logo = document.getElementById('canvas1')
 logo.addEventListener('dblclick', function(){
     window.requestAnimationFrame(logoAnimation)
     addCar()
@@ -613,7 +612,7 @@ function removeAllText(element) {
 
 function logoAnimation(){
 
-    let logo = document.getElementById('logo')
+    let logo = document.getElementById('canvas1')
 
     const logoSpinning = [
         { transform: 'rotateY(0) scale(1)' },
@@ -627,10 +626,6 @@ function logoAnimation(){
     }
 
     logo.animate(logoSpinning, logoTiming)
-
-
-
-
 }
 
 
@@ -638,11 +633,12 @@ function logoAnimation(){
 
 
 build_chart()
+buildLogo()
 
 function build_chart(){
 
-    var e = document.getElementById('canvas');
-    var c = e.getContext('2d');
+    let e = document.getElementById('canvas');
+    let c = e.getContext('2d');
 
     c.beginPath()
     c.clearRect(0, 0, canvas.width, canvas.height);
@@ -778,11 +774,93 @@ function build_chart(){
     console.log("===================")
 }
 
+function buildLogo(){
+    let e = document.getElementById('canvas1');
+    let can = e.getContext('2d');
+
+    can.globalCompositeOperation = 'xor';
 
 
+    can.lineWidth = 8;
+    // c.strokeStyle='#353433';
+    can.fillStyle='#fffed6';
+    can.fillRect(0, 0, 640, 480);
+    can.beginPath();
 
+    can.lineWidth = 3; 
+    can.strokeStyle='#55fa47';
+    can.fillStyle='#7d97ff';
+    can.arc(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6, e.height/8, 0 * Math.PI, 2 * Math.PI, false);
+    can.fill();
+    can.stroke();
 
+    can.beginPath();
+    can.lineWidth = 3; 
+    can.strokeStyle='#7de7ff';
+    can.fillStyle='#7d97ff';
+    can.arc(e.width / 2 -  e.width / 7, e.height / 2 + e.height / 6, e.height/8, 0 * Math.PI, 2 * Math.PI, false);
+    can.fill();
+    can.stroke();
 
+    can.beginPath();
+    can.lineWidth = 3; 
+    can.strokeStyle='#ff8d7d';
+    can.fillStyle='#7d97ff';
+    can.arc(e.width / 2, e.height / 2, e.height/8, 0 * Math.PI, 2 * Math.PI, false);
+    can.fill();
+    can.stroke();
 
+    can.beginPath();
+    can.lineWidth = 3; 
+    can.strokeStyle='#7d97ff';
+    can.fillStyle='#7d97ff';
+    can.arc(e.width / 2, e.height / 2 + e.height / 9, e.height/12, 0 * Math.PI, 2 * Math.PI, false);
+    can.fill();
+    can.stroke();
+
+    can.beginPath();
+    can.moveTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6);
+    can.lineTo(e.width / 2 -  e.width / 7, e.height / 2 + e.height / 6);
+    can.stroke();
+    can.beginPath();
+    can.moveTo(e.width / 2 - e.width / 7, e.height / 2 + e.height / 6);
+    can.lineTo(e.width / 2, e.height / 2);
+    can.stroke();
+    can.beginPath();
+    can.moveTo(e.width / 2, e.height / 2);
+    can.lineTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6 );
+    can.stroke();
+
+    can.beginPath();
+    can.moveTo(e.width / 2, e.height / 2);
+    can.lineTo(e.width / 2 + e.width / 7 + 5, e.height / 2 +  e.height/23);
+    can.strokeStyle='#ff8d7d';
+    can.stroke();
+    can.beginPath();
+    can.moveTo(e.width / 2, e.height / 2);
+    can.lineTo(e.width / 2 - e.width / 7 - 5, e.height / 2 +  e.height/23);
+    can.stroke();
+
+    can.beginPath();
+    can.moveTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6);
+    can.lineTo(e.width / 2 + e.width / 7 + 5, e.height / 2 +  e.height/23);
+    can.strokeStyle='#55fa47';
+    can.stroke();
+    can.beginPath();
+    can.moveTo(e.width / 2 + e.width / 7, e.height / 2 + e.height / 6);
+    can.lineTo(e.width / 2,  e.height / 2 + e.height / 6 + e.height / 16 + 4);
+    can.stroke();
+
+    can.beginPath();
+    can.moveTo(e.width / 2 - e.width / 7, e.height / 2 + e.height / 6);
+    can.lineTo(e.width / 2 - e.width / 7 - 5, e.height / 2 +  e.height/23);
+    can.strokeStyle='#7de7ff';
+    can.stroke();
+    can.beginPath();
+    can.moveTo(e.width / 2 - e.width / 7, e.height / 2 + e.height / 6);
+    can.lineTo(e.width / 2,  e.height / 2 + e.height / 6 + e.height / 16 + 4);
+    can.stroke();
+
+}
 
 
