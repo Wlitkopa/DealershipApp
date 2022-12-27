@@ -67,6 +67,11 @@ function wykonaj(user_commands, response){
     var commands = user_commands.split('\n')
     let message = ""
 
+    if (user_commands.length == 0){
+        message = "Enter the command"
+        return message
+    }
+
     for (let i=0; i < commands.length; i++ ){
         commands[i] = commands[i].split(' ');
         console.log(commands[i])

@@ -48,10 +48,18 @@ function requestListener(request, response) {
               <!-- Zmień wartość "lang" z 'en' na 'pl' -->
             
               <head>
+
+                <meta http-equiv="Content-Security-Policy" 
+                    content="default-src 'self'; style-src https://www.w3schools.com/w3css/4/w3.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css;
+                             img-src file:///home/przemek/VSCodeProjects/HTMLProjects/ps_html/lab5/obrazy/" />
+
+
+
+
                 <meta charset="UTF-8">
                 <meta name="viewport"
                       content="width=device-width, initial-scale=1">
-                    <link rel="stylesheet"
+                <link rel="stylesheet"
                     href="animations.css"
                     media="screen"
                     type="text/css">
@@ -111,7 +119,7 @@ function requestListener(request, response) {
     
     
     
-                <form method="GET" action="/submit">
+                <form method="GET" action="/submit" class="w3-margin">
                     <textarea id="commandarea" name="command" rows="4" cols="50" placeholder="Enter the command"></textarea>
                     <br>
                     <input type="submit">
@@ -119,7 +127,7 @@ function requestListener(request, response) {
                 
     
 
-                <p name="rezultat_komendy">
+                <p name="rezultat_komendy" class="w3-border w3-border-black w3-round w3-margin w3-padding w3-left" style="width: 20%;">
                   <a>Rezultat komendy: </a>
                   <br>
                   <a>${wykonaj(url.searchParams.get('command'), response)}</a>
@@ -127,14 +135,14 @@ function requestListener(request, response) {
     
     
     
-                <p name="kupione">
+                <p name="kupione" class="w3-border w3-border-black w3-round w3-margin w3-padding w3-left" style="width: 20%;">
                     <a>Kupione: </a>
                     <br>
                     <br>
                     <a>${showBought()}</a>
                 </p>
     
-                <p name="wypozyczone">
+                <p name="wypozyczone" class="w3-border w3-border-black w3-round w3-margin w3-padding w3-left" style="width: 20%;">
                   <a>Wypożyczone: </a>
                   <br>
                   <br>
@@ -147,7 +155,7 @@ function requestListener(request, response) {
             
                     <div class="row w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:30%">
             
-                      <img src="/home/przemek/VSCodeProjects/HTMLProjects/ps_html/lab5/obrazy/fiat_tipo.jpg" alt="Fiat Tipo" style="width:100%">
+                      <img src="file:///home/przemek/VSCodeProjects/HTMLProjects/ps_html/lab5/obrazy/fiat_tipo.jpg" alt="Fiat Tipo" style="width:100%">
                       <div class="w3-container">
                         <h4 class="w3-border-bottom"><b>Fiat Tipo</b></h4>
                       </div>
@@ -164,7 +172,7 @@ function requestListener(request, response) {
               
                     <div class="column w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:35%">
               
-                      <img src="fiat500.jpg" alt="Fiat 500" style="width:100%">
+                      <img src="http://localhost:8000/obrazy/fiat500.jpg" alt="Fiat 500" style="width:100%">
                       <div class="w3-container">
                         <h4 class="w3-border-bottom"><b>Fiat 500</b></h4>
                       </div>
@@ -188,7 +196,7 @@ function requestListener(request, response) {
             
                     <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:35%">
             
-                      <img src="przyczepa_jedn.jpg" alt="Przyczepa jednoosiowa" style="width:100%">
+                      <img src="https://thumbs.img-sprzedajemy.pl/1000x901c/f0/03/22/przyczepa-jednoosiowa-wywrotka-na-3-strony-nowa-sprzedam-557153130.jpg" alt="Przyczepa jednoosiowa" style="width:100%">
                       <div class="w3-container">
                         <h4 class="w3-border-bottom"><b>Przyczepa jednoosiowa</b></h4>
                       </div>
@@ -205,7 +213,7 @@ function requestListener(request, response) {
               
                     <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-right w3-mobile rotation" style="width:40%;">
               
-                      <img src="przyczepa.jpg" alt="Przyczepa samochodowa" style="width:100%">
+                      <img src="http://127.0.0.1:5500/lab5/obrazy/przyczepa.jpg" alt="Przyczepa samochodowa" style="width:100%">
                       <div class="w3-container">
                         <h4 class="w3-border-bottom"><b>Przyczepa samochodowa</b></h4>
                       </div>
@@ -278,6 +286,12 @@ function requestListener(request, response) {
           <!-- Zmień wartość "lang" z 'en' na 'pl' -->
         
           <head>
+          
+            <meta http-equiv="Content-Security-Policy" 
+                    content="default-src 'self'; style-src https://www.w3schools.com/w3css/4/w3.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css;
+                             " />
+
+
             <meta charset="UTF-8">
             <meta name="viewport"
                   content="width=device-width, initial-scale=1">
@@ -409,7 +423,7 @@ function requestListener(request, response) {
         
                 <div class="w3-card-4 w3-border w3-border-grey w3-margin w3-left w3-mobile rotation" style="width:35%">
         
-                  <img src="przyczepa_jedn.jpg" alt="Przyczepa jednoosiowa" style="width:100%">
+                  <img src="https://thumbs.img-sprzedajemy.pl/1000x901c/f0/03/22/przyczepa-jednoosiowa-wywrotka-na-3-strony-nowa-sprzedam-557153130.jpg" alt="Przyczepa jednoosiowa" style="width:100%">
                   <div class="w3-container">
                     <h4 class="w3-border-bottom"><b>Przyczepa jednoosiowa</b></h4>
                   </div>

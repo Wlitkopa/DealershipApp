@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-json": "^1.0.0"
+  },
+  "dependencies": {
+    "mongoose": "^6.8.1"
+  }
+}

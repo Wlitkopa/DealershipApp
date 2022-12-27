@@ -1,0 +1,25 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "The \"hello world\" application",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha",
+    "start": "node app2.js",
+    "app1": "echo 'Uruchamiam aplikację nr 1' & node app1.js",
+    "app2": "echo 'Uruchamiam aplikację nr 2' & node app2.js"
+  },
+  "author": "Przemek Pawlitko",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.1",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-json": "^1.0.0",
+    "supertest": "^6.3.3"
+  }
+}
