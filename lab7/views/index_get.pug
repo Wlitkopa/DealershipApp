@@ -1,0 +1,130 @@
+doctype html
+// Zmień wartość "lang" z 'en' na 'pl'
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='animations.css' media='screen' type='text/css')
+  link(rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css')
+  // Icons
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css')
+  title
+    | Wypo&zdot;yczalnia samochod&oacute;w
+header.w3-display-container.w3-border.w3-amber.w3-padding.w3-container.w3-cell-row.w3-border-amber.w3-large
+  div
+    .w3-left
+      i.fa.fa-car.w3-xxlarge
+    .w3-right.w3-hide-small
+      button.w3-button.w3-border.w3-round.w3-padding.w3-right.w3-border-black.w3-amber.w3-hide-small.w3-yellow Szukaj
+    .w3-right.w3-margin-right.w3-hide-small
+      input.w3-input.w3-right.w3-round.w3-margin-right(placeholder='szukaj')
+    .w3-dropdown-click.w3-right.w3-margin-right.w3-hide-small
+      button.w3-button.w3-margin-right.w3-hide-small(onclick='myFunction()')
+        i.fa.fa-caret-down
+        | &nbsp;&nbsp; Pojazdy
+      #large.w3-dropdown-content.w3-bar-block.w3-border.w3-margin-right.w3-round.w3-border-grey.w3-hide-small
+        a.w3-bar-item.w3-button Samochody
+        a.w3-bar-item.w3-button Przyczepy
+
+    div
+      a.w3-bar-item.w3-button.w3-right.w3-border.w3-border-black.w3-round.w3-hide-large.w3-hide-medium.w3-yellow(href='javascript:void(0)' onclick='myFunction()') &#x2630;
+    #small.w3-bar-block.w3-amber.w3-hide.w3-hide-large.w3-hide-medium
+      a.w3-bar-item.w3-button.w3-border.w3-border-black.w3-round.w3-yellow(href='#') Samochody
+      a.w3-bar-item.w3-button.w3-border.w3-border-black.w3-round.w3-yellow(href='#') Przyczepy
+      input.w3-hide-large.w3-hide-medium.w3-border.w3-border-black.w3-round(type='text' placeholder='Szukaj')
+      button.w3-hide-large.w3-button.w3-hide-medium.w3-border.w3-border-black.w3-round.w3-yellow Szukaj
+// CANVAS
+canvas#canvas1.w3-right(width='200' height='300' style='border:1px solid #000000; position:sticky; float: right; margin: 10px; top: 0px;')
+  | Wygl&aogon;da na to, &zdot;e twoja przegl&aogon;darka nie obs&lstrok;uguje elementu &quot;canvas&quot; / It looks like your browser does not support the &quot;canvas&quot; element
+button.w3-btn.w3-block.w3-amber.w3-left-align.w3-border.w3-border-black.w3-round.w3-margin-bottom.w3-margin-top(onclick="AccordFunction('Demo1')" style='width: 20%; margin-left: 4px;') Dost&eogon;pne samochody
+
+// #Demo1.w3-hide.w3-margin-bottom(style='width: 20%')
+
+p.w3-border.w3-border-black.w3-round.w3-margin.w3-padding.w3-left(name='dostepne' style='width: 20%;')
+  a Dostępne: 
+  br
+  br
+  each set in cars
+    br
+    img(src=set.src alt='Fiat Tipo' style='width:20%')
+    a #{set.brand} 
+    a Ilość: #{set.amount} 
+    a Koszt wypożyczenia: #{set.rent_cost}
+    a Koszt kupna: #{set.sell_cost}
+    br
+
+form.w3-margin(method='POST' action='/client')
+  textarea#commandarea(name='command' rows='4' cols='50' placeholder='Enter the command (CLIENT <rent, retur>   <car>    <name>   <surname>    <rent_date>    <return_date>)')
+  br
+  input(type='submit')
+
+form.w3-margin(method='POST' action='/admin')
+  textarea#commandarea(name='command' rows='4' cols='50' placeholder='Enter the command (ADMIN <sell, add>   <car>    <name>   <surname>    <rent_date>    <return_date>)')
+  br
+  input(type='submit')
+
+p.w3-border.w3-border-black.w3-round.w3-margin.w3-padding.w3-left(name='rezultat_komendy' style='width: 20%;')
+  a Rezultat komendy: 
+  br
+  a #{message}
+
+p.w3-border.w3-border-black.w3-round.w3-margin.w3-padding.w3-left(name='kupione' style='width: 20%;')
+  a Kupione: 
+  br
+  br
+  each set in bought
+    br
+    a #{set.name} 
+    a #{set.surname} 
+    a #{set.brand} 
+    a #{set.cost} 
+    a #{set.bought_date} 
+    br
+
+
+
+
+p.w3-border.w3-border-black.w3-round.w3-margin.w3-padding.w3-left(name='wypożyczone' style='width: 20%;')
+  a Wypo&zdot;yczone:
+  br
+  br
+  each set in rented
+    br
+    a #{set.name} 
+    a #{set.surname} 
+    a #{set.brand} 
+    a #{set.cost} 
+    a #{set.dataw} 
+    a #{set.dataz} 
+    a #{set.bought_date}
+    br 
+
+footer.w3-border.w3-border-light-green.w3-light-green.w3-bottom
+  a.w3-text-white.w3-margin
+    i.far.fa-copyright
+    | &nbsp;AGH Company
+
+script.
+  function myFunction() {
+  var x = document.getElementById("large");
+  if (x.className.indexOf("w3-show") == -1) {
+  x.className += " w3-show";
+  } else {
+  x.className = x.className.replace(" w3-show", "");
+  }
+  var y = document.getElementById("small");
+  if (y.className.indexOf("w3-show") == -1) {
+  y.className += " w3-show";
+  } else {
+  y.className = y.className.replace(" w3-show", "");
+  }
+  }
+  function AccordFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+  x.className += " w3-show";
+  } else {
+  x.className = x.className.replace(" w3-show", "");
+  }
+  }
+

@@ -167,13 +167,11 @@ app.get('/calculate/:operation/:x/:y', function(req, res){
       console.log('rows: ' + rows);
       console.log('rows[0].operation: ' + rows[0].operation)
 
-  
       // Response to client
       res.render('index', {rows: rows});  
     }
     
     dataPull()
-  
   
   })
 
