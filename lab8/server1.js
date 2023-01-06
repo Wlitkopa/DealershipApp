@@ -29,10 +29,8 @@ app.post('/submit', function (req, res) {
         console.log('body: ' + body)
     });
 
-
     req.on('end', function () {
         var post = qs.parse(body);
-        console.log('post.imie: ' + post.imie)
         // use post['blah'], etc.
         switch (req.accepts(['html', 'text', 'json', 'xml'])) {
             case 'json':

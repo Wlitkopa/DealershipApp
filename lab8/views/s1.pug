@@ -1,0 +1,124 @@
+
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title
+            | Form
+        script.
+
+            function getAJAX2() {
+
+                console.log('Wchodzi w getAJAX2()')
+
+                let xhr = new XMLHttpRequest();
+                let local = document.getElementById('local')
+                console.log('local: ' + local)
+                local.innerHTML = 'Downloading local data'
+                xhr.responseType = 'document'
+
+
+                xhr.addEventListener("load", function (evt) {
+                    console.log('xhr.status: ' + xhr.status)
+                    console.log('xhr.response: ' + xhr.response);
+
+                    if (xhr.status === 200) {
+                        //- window.alert(xhr.response);
+                        let xml = xhr.response
+                        //- console.log(xhr.response);
+                        //- console.log('xhr.responseType: ' + xhr.responseType)
+                        //- console.log('xml.documentElement: ' + xml.documentElement)
+                        //- console.log('xml.childNodes[0]: ' + xml.childNodes[0])
+                        //- console.log('xml.childNodes[0].innerHTML: ' + xml.childNodes[0].innerHTML)
+                        //- console.log('xml.childNodes[0].firstElementChild.innerHTML: ' + xml.childNodes[0].firstElementChild.innerHTML)
+                        //- console.log('xml.childNodes[0].children[0].innerHTML: ' + xml.childNodes[0].children[0].innerHTML)
+
+                        let data = xml.childNodes[0].children[0].innerHTML
+                        let czas = xml.childNodes[0].children[1].innerHTML
+
+                        local.innerHTML = data + '<br></br>' + czas
+
+
+                        //- console.log('xml.documentElement: ' + xml.documentElement)
+                        
+                        
+                    }
+                });
+
+                xhr.addEventListener("error", function (evt) {
+                    //- window.alert('There was a problem with this request.');
+                    local.innerHTML = 'The CORS problem'
+
+                });
+
+                xhr.open('GET', 'http://localhost:3001/', true);
+                xhr.send(null);
+
+            }
+
+
+            function getAJAX() {
+
+                console.log('Wchodzi w getAJAX()')
+
+                let xhr = new XMLHttpRequest();
+                let remote = document.getElementById('remote')
+                console.log('remote: ' + remote)
+                remote.innerHTML = 'Downloading remote data'
+
+                xhr.addEventListener("load", function (evt) {
+                    console.log('xhr.status: ' + xhr.status)
+                    if (xhr.status === 200) {
+                        //- window.alert(xhr.response);
+                        //- console.log(xhr.response);
+                        if (xhr.response == 'This website is currently experiencing high load.'){
+                            remote.innerHTML = 'The server is overloaded'
+                        }
+                        else {
+                            let data = JSON.parse(xhr.response)
+                            let curDate = data.datetime
+                            curDate = data.datetime.split('T')
+                            let curTime = curDate[1].split('+')
+                            curDate = curDate[0]
+                            remote.innerHTML = 'Data: ' + curDate + '<br></br>' + 'Czas: ' + curTime[0] + '<br></br>'
+                        }
+                    }
+                });
+
+                xhr.addEventListener("error", function (evt) {
+                    //- window.alert('There was a problem with this request.');
+                    remote.innerHTML = 'The server is overloaded'
+
+                });
+
+                xhr.open('GET', 'http://worldtimeapi.org/api/timezone/Europe/Warsaw', true);
+
+                xhr.send(null);
+            }
+
+            
+
+
+
+    body
+        main
+            h1 Remote
+            #remote
+                | Remote date and time
+            // *****************
+            h1 Local
+            #local
+                | Local date and time
+            br
+            form
+                textarea#area(name='area' rows='4' cols='50' placeholder='area')
+                textarea#location(name='location' rows='4' cols='50' placeholder='location')
+                input(type='button' value='Pobierz' onclick='getAJAX();getAJAX2()')
+
+
+                //- br
+                //- input(type='button' value='AJAX (GET)' onclick='getAJAX()')
+                //- input(type='button' value='AJAX (POST)' onclick='postAJAX()')
+                //- input(type='button' value='FetchAPI (GET)' onclick='getFetchAPI()')
+                //- input(type='button' value='FetchAPI (POST)' onclick='postFetchAPI()')
+

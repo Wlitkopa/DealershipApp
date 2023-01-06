@@ -89,7 +89,7 @@ html(lang='en')
                         }
                         getContent()
                         //- console.log('a: ' + a)
-                        ; // show the Promise object
+                        // show the Promise object
                         console.log(result);
                     }
                     else {
@@ -192,7 +192,81 @@ html(lang='en')
 
                 xhr.send(`imie=${encodeURIComponent(imie)}`)
                 //- xhr.send("fname=Henry&lname=Ford") 
+            }
 
+            function getFetchAPI() {
+                console.log('Zaczynam getFetchAPI')
+                let imie = document.getElementsByName('imie')[0].value
+
+                var headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+                 
+                var myRequest = new Request({headers: headers});
+
+                fetch('/submit?imie=' + encodeURIComponent(imie), myRequest) // Execution of the (asynchronous) query to the web server — a promise is created
+                .then(function (response) { // if the promise is fulfilled
+                    if (!response.ok)
+                        throw Error(response.statusText);
+                    if (response.headers.get("Content-Type") !== 'application/json') {
+                        // If the received data is plain text or an XML document
+
+                 
+                        const result = response.text();
+                        async function getContent(){
+                           let a = await result
+                           console.log('async a: ' + a)
+                           window.alert(a)
+                        }
+                        getContent()
+                        //- console.log('a: ' + a)
+                        // show the Promise object
+                        console.log(result);
+                    }
+                    else {
+                        //If the received data is a JSON document
+                        const result = response.json();
+                        window.alert(result); // show the Promise object
+                        console.log(result);
+                    }
+                })
+                .catch(function (error) { // if the promise is rejected
+                    window.alert(error);
+                });
+            }
+
+            function postFetchAPI() {
+                console.log('Zaczynam postFetchAPI')
+                let imie = document.getElementsByName('imie')[0].value
+                var headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+
+                fetch('/submit', {method: 'POST', body: 'imie=' + encodeURIComponent(imie), headers: {'Content-Type':'application/x-www-form-urlencoded'}}) // Execution of the (asynchronous) query to the web server — a promise is created
+                .then(function (response) { // if the promise is fulfilled
+                    if (!response.ok)
+                        throw Error(response.statusText);
+                    if (response.headers.get("Content-Type") !== 'application/json') {
+                        // If the received data is plain text or an XML document
+
+                 
+                        const result = response.text();
+                        async function getContent(){
+                           let a = await result
+                           console.log('async a: ' + a)
+                           window.alert(decodeURIComponent(a))
+                        }
+                        getContent()
+                        //- console.log('a: ' + a)
+                        // show the Promise object
+                        console.log(result);
+                    }
+                    else {
+                        //If the received data is a JSON document
+                        const result = response.json();
+                        window.alert(result); // show the Promise object
+                        console.log(result);
+                    }
+                })
+                .catch(function (error) { // if the promise is rejected
+                    window.alert(error);
+                });
             }
 
 
@@ -203,6 +277,8 @@ html(lang='en')
                 br
                 input(type='button' value='AJAX (GET)' onclick='getAJAX()')
                 input(type='button' value='AJAX (POST)' onclick='postAJAX()')
+                input(type='button' value='FetchAPI (GET)' onclick='getFetchAPI()')
+                input(type='button' value='FetchAPI (POST)' onclick='postFetchAPI()')
 
 
             form(method='get' action='/submit')
