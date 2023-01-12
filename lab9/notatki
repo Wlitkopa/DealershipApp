@@ -1,0 +1,2 @@
+GET oraz DELETE działają tak samo, dane są przekazywane w URL
+POST oraz PUT działają tak samo, dane są przekazywane wewnątrz rządania

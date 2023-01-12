@@ -104,41 +104,6 @@ html(lang='en')
                 });
             }
 
-            /***********************************************/
-            /* Same as above but using 'async' and 'await' */
-            /***********************************************/
-            /*
-            async function requestFetchAPI() {
-                try {
-                    response = await fetch('/submit', {
-                        headers: {
-                            // 'Accept': 'application/json'
-                            // 'Accept': 'application/xml'
-                        }
-                    }); // Execution of the (asynchronous) query to the web server — a promise is created
-
-                    // If the promise is fulfilled, then 'response' has a value
-                    if (!response.ok)
-                        throw Error(response.statusText);
-                    if (response.headers.get("Content-Type") !== 'application/json') {
-                        // If the received data is plain text or an XML document
-                        const result = response.text();
-                        window.alert(result); // show the Promise object
-                        console.log(result);
-                    }
-                    else {
-                        //If the received data is a JSON document
-                        const result = response.json();
-                        window.alert(result); // show the Promise object
-                        console.log(result);
-                    }
-                }
-                catch (error) { // if the promise is rejected
-                    window.alert(error);
-                }
-            }
-            */
-
             function getAJAX() {
                 const xhr = new XMLHttpRequest();
                 console.log('Wchodzi tutaj')

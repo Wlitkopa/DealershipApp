@@ -41,6 +41,7 @@ const reg = new RegExp('/*.jpg')
 // Connecting to Mongodb database
 const mongoose = require('mongoose');
 const { brotliCompress } = require('node:zlib')
+// const { rent } = require('./dealer_script_lab7')
 main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect('mongodb+srv://Przemek:lab6password@lab6.dylwucr.mongodb.net/test');
@@ -81,9 +82,6 @@ const rentedd = new mongoose.Schema({
 });
 const Rented = mongoose.model('Rented', rentedd);
 
-// var url = new URL(request.url, `http://${request.headers.host}`); // Create the URL object
-
-
 
 // sell Fiat_Tipo Henryk Kaczka
 // rent Fiat_Tipo Henryk Kaczka 23-10-2002 25-10-2002
@@ -92,7 +90,6 @@ const Rented = mongoose.model('Rented', rentedd);
 function addCar(command, res){
   // let new_car_prompt = prompt("car amount sell_cost rent_cost_per_day img_url");
   // new_car = new_car_prompt.split(' ')
-
 
   // Gran_torino 4 2000 400 gran_torino.jpg
 
@@ -119,193 +116,6 @@ function addCar(command, res){
 }
 
 
-function generatehtml(response){
-
-    response.write(`<!DOCTYPE html>
-    <html lang="en">
-      <!-- Zmień wartość "lang" z 'en' na 'pl' -->
-    
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1">
-        <link rel="stylesheet"
-            href="animations.css"
-            media="screen"
-            type="text/css">
-        <link rel="stylesheet"
-              href="https://www.w3schools.com/w3css/4/w3.css"><!-- Icons -->
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-        <title>
-          Wypożyczalnia samochodów
-        </title>
-      </head>
-      <body style="height: 100%;">
-    
-        <header class="w3-display-container w3-border w3-amber w3-padding w3-container w3-cell-row w3-border-amber w3-large">
-          <div>
-            <div class="w3-left"><i class="fa fa-car w3-xxlarge"></i></div>
-          
-            <div class="w3-right  w3-hide-small"><button class="w3-button w3-border w3-round w3-padding w3-right w3-border-black w3-amber w3-hide-small w3-yellow">Szukaj</button></div>
-            <div class="w3-right w3-margin-right  w3-hide-small"><input class="w3-input w3-right w3-round w3-margin-right" placeholder="szukaj"></div>
-            
-    
-            <div class="w3-dropdown-click w3-right w3-margin-right w3-hide-small">
-              <button onclick="myFunction()" class="w3-button w3-margin-right w3-hide-small"><i class="fa fa-caret-down"></i>&nbsp;&nbsp; Pojazdy</button>
-              <div id="large" class="w3-dropdown-content w3-bar-block w3-border w3-margin-right w3-round w3-border-grey w3-hide-small">
-                <a class="w3-bar-item w3-button">Samochody</a>
-                <a class="w3-bar-item w3-button">Przyczepy</a>
-              </div>
-            </div>
-    
-            <!-- <div class="w3-dropdown-click w3-right w3-margin-right w3-hide-large w3-hide-medium">
-              <button onclick="myFunction()" class="w3-bar-item w3-button w3-padding w3-margin-right w3-border w3-border-black w3-round">&#9776;</button>
-              <div id="small" class="w3-dropdown-content w3-bar-block w3-border w3-margin-right w3-round w3-border-grey w3-hide-small">
-                <a class="w3-bar-item w3-button">Samochody</a>
-                <a class="w3-bar-item w3-button">Przyczepy</a>
-              </div>
-            </div> -->
-    
-    
-            <div>
-              <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-border w3-border-black w3-round w3-hide-large w3-hide-medium w3-yellow" onclick="myFunction()">&#9776;</a>
-            </div>
-    
-            <div id="small" class="w3-bar-block w3-amber w3-hide w3-hide-large w3-hide-medium">
-              <a href="#" class="w3-bar-item w3-button w3-border w3-border-black w3-round w3-yellow">Samochody</a>
-              <a href="#" class="w3-bar-item w3-button w3-border w3-border-black w3-round w3-yellow">Przyczepy</a>
-              <input class= "w3-hide-large w3-hide-medium w3-border w3-border-black w3-round" type="text" placeholder="Szukaj">
-                  <button class="w3-hide-large w3-button w3-hide-medium w3-border w3-border-black w3-round w3-yellow">Szukaj</button>
-          </div>
-    
-          </div>
-        </header>
-    
-            <!-- CANVAS  -->
-            <canvas id="canvas"
-            width="700"
-            height="400"
-            style="border:1px solid #000000; position: relative; z-index: 1; clear: both; position:sticky; float: right; margin: 10px; top: 0px;"
-            class="w3-right"
-            role="img" 
-            aria-label="Bar Chart Values of avaiable cars">
-        Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not support the "canvas" element
-            </canvas>
-    
-            <canvas id="canvas1"
-            width="200"
-            height="300"
-            style="border:1px solid #000000; position:sticky; float: right; margin: 10px; top: 0px;"
-            class="w3-right">
-      Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not support the "canvas" element
-            </canvas>
-    
-    
-        <button onclick="AccordFunction('Demo1')" class="w3-btn w3-block w3-amber w3-left-align w3-border w3-border-black w3-round w3-margin-bottom w3-margin-top" style="width: 20%; margin-left: 4px;">Dostępne samochody</button>
-        <div id="Demo1" class="w3-hide w3-margin-bottom" style="width: 20%">
-          <div id="Fiat_Tipo_div">
-            <img id="Fiat_Tipo_img" src="fiat_tipo.jpg" alt="Fiat Tipo" style="width:20%">
-            <a>Fiat_Tipo</a>
-            <a id="Fiat_Tipo_sztuki">Ilość sztuk: </a>
-          </div>
-    
-          <div id="Fiat_500_div">
-            <img id="Fiat_500_img" src="fiat500.jpg" alt="Fiat 500" style="width:20%">
-            <a>Fiat_500</a>
-            <a id="Fiat_500_sztuki">Ilość sztuk: </a>
-          </div>
-    
-          <div id="Przyczepa_jednoosiowa_div">
-            <img id="Przyczepa_jednoosiowa_img" src="przyczepa_jedn.jpg" alt="Przyczepa jednoosiowa" style="width:20%">
-            <a>Przyczepa_jednoosiowa</a>
-            <a id="Przyczepa_jednoosiowa_sztuki">Ilość sztuk: </a>
-          </div>
-    
-          <div id="Przyczepa_samochodowa_div">
-            <img id="Przyczepa_samochodowa_img" src="przyczepa.jpg" alt="Fiat Tipo" style="width:20%">
-            <a>Przyczepa_samochodowa</a>
-            <a id="Przyczepa_samochodowa_sztuki">Ilość sztuk: </a>
-          </div>
-    
-        </div>
-                
-    
-    
-        <form method="GET" action="/submit" class="w3-margin">
-            <textarea id="commandarea" name="command" rows="4" cols="50" placeholder="Enter the command (<sell, rent, retur>   <car>    <name>   <surname>    <rent_date>    <return_date>)"></textarea>
-            <br>
-            <input type="submit">
-        </form>
-    
-
-        <p name="rezultat_komendy" class="w3-border w3-border-black w3-round w3-margin w3-padding w3-left" style="width: 20%;">
-            <a>Rezultat komendy: </a>
-            <br>
-            <a>${wykonaj(url.searchParams.get('command'), response)}</a>
-        </p>
-
-
-
-        <p name="kupione" class="w3-border w3-border-black w3-round w3-margin w3-padding w3-left" style="width: 20%;">
-            <a>Kupione: </a>
-            <br>
-            <br>
-            <a>${showBought()}</a>
-        </p>
-
-        <p name="wypozyczone" class="w3-border w3-border-black w3-round w3-margin w3-padding w3-left" style="width: 20%;">
-            <a>Wypożyczone: </a>
-            <br>
-            <br>
-            <a>${showRented()}</a>
-        </p>
-       
-      
-        <footer class="w3-border w3-border-light-green w3-light-green w3-bottom">
-          <a class="w3-text-white w3-margin"><i class='far fa-copyright'></i>&nbsp;AGH Company </a>
-        </footer>
-    
-    
-        <script>
-          function myFunction() {
-            var x = document.getElementById("large");
-            if (x.className.indexOf("w3-show") == -1) {
-              x.className += " w3-show";
-            } else { 
-              x.className = x.className.replace(" w3-show", "");
-            }
-            var y = document.getElementById("small");
-            if (y.className.indexOf("w3-show") == -1) {
-              y.className += " w3-show";
-            } else { 
-              y.className = y.className.replace(" w3-show", "");
-            }
-          }
-    
-          function slow_animation(){
-            document.getElementById('small').className = 'dropdown';
-          }
-    
-    
-          function AccordFunction(id) {
-            var x = document.getElementById(id);
-            if (x.className.indexOf("w3-show") == -1) {
-              x.className += " w3-show";
-            } else { 
-              x.className = x.className.replace(" w3-show", "");
-            }
-          }
-          </script>    
-    
-      </body>
-    </html>`)
-
-}
-
-
 async function returPull(res, command){
   // rent ford Alicja Kaczka 20-11-2003 25-11-2003
   // rented.push([imie, nazwisko, marka, dataw, dataz, koszt, today])
@@ -320,7 +130,10 @@ async function returPull(res, command){
   if (toReturn[0] == undefined){
       console.log("There is not a person with given name and surname that rented a car/trailer from us or this person did not rent given car")
       let message = 'There is not a person with given name and surname that rented a car/trailer from us or this person did not rent given car'
-      res.render('index_get', {message: message}); 
+      let rented = await Rented.find();
+      let bought = await Bought.find()
+      let cars = await Car.find()  
+      res.render('index_get', {message: message, cars: cars, bought: bought, rented: rented}); 
       return 
   }
   else {
@@ -367,6 +180,13 @@ async function rentedPull(res, command){
         res.render('index_get', {message: message});  
         return
     }
+
+    if (dataz == undefined || dataw == undefined){
+      console.log("Enter the rent and return date")
+      let message = "Enter the rent and return date"
+      res.render('index_get', {message: message});  
+      return
+  }
 
     if (toRent[0] == undefined){
       console.log('There is no such car brand in the storage')
@@ -598,8 +418,17 @@ router.post('/client' , function ( req , res ) {
   }
   else {
     console.log('temp[0][0]: ' + temp[0][0])
-    console.log('WRONG COMMAND FOR CLIENT')
-    res.render('index_get')
+
+    async function wrongComm(){
+      console.log('WRONG COMMAND FOR CLIENT')
+      let message = 'Wrong command for client'
+      let rented = await Rented.find()
+      let bought = await Bought.find()
+      let cars = await Car.find()
+      res.render('index_get', {message: message, cars: cars, bought: bought, rented: rented})
+    }
+
+    wrongComm()
   }
 
 });
@@ -628,9 +457,17 @@ router.post('/admin' , function ( req , res ) {
   }
 
   else {
-    console.log('WRONG COMMAND FOR ADMIN')
-    let message = 'Wrong command for admin'
-    res.render('index_get', {message: message})
+
+    async function wrongComm(){
+      console.log('WRONG COMMAND FOR ADMIN')
+      let message = 'Wrong command for admin'
+      let rented = await Rented.find()
+      let bought = await Bought.find()
+      let cars = await Car.find()
+      res.render('index_get', {message: message, cars: cars, bought: bought, rented: rented})
+    }
+
+    wrongComm()
   }
 
 });
