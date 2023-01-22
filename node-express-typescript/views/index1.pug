@@ -57,12 +57,16 @@ if userName
     br
     a #{userName}
 
+  div(class='w3-border w3-border-black w3-round w3-margin w3-right w3-padding')
+    a Obecny klient wypożyczalni:
+    br
+    a(id='curUser') #{userName}
 
-
-div(class='w3-border w3-border-black w3-round w3-margin w3-right w3-padding')
-  a Obecny klient wypożyczalni:
-  br
-  a(id='curUser')
+else
+  div(class='w3-border w3-border-black w3-round w3-margin w3-right w3-padding')
+    a Obecny klient wypożyczalni:
+    br
+    a(id='curUser')
 
 div(class='w3-border w3-border-black w3-round w3-margin w3-right w3-padding')
   a Obecnie ustawione daty:

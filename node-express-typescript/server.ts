@@ -981,15 +981,30 @@ app.get('/oauth2/redirect/google',
 
     async function log(req: Request, res: any){
         console.log('Weszło w app.get(/oauth2/redirect/google)')
-        console.log(res.req.user[0].name)
-        let user: String = res.req.user[0].name
+        console.log(res.req.user)
+
+        console.log(res.req.user.name)
+        let userTemp: String = res.req.user[0].name
         let cars: JSON[] = await Car.find()
         let rented: JSON[] = await Rented.find()
         let bought: JSON[] = await Bought.find()
-    
-        res.render('index1', {userName: user, cars: cars, bought: bought, rented: rented});
-    }
+        
+        let temp1 = String(userTemp).split(' ')
+        if (temp1.length > 1){
+            console.log('Array temp1: ' + temp1)
+            user = temp1
+        }
+        else {
+            console.log('temp1: ' + temp1)
+            user = temp1
+            console.log('user[0]: ' + user[0])
+            user[1] = ' '
+            console.log('user[1]: ' + user[1])
 
+        }
+
+        res.render('index1', {userName: userTemp, cars: cars, bought: bought, rented: rented});
+    }
 
 
     log(req, res)
