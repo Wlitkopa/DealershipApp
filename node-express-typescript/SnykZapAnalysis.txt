@@ -1,0 +1,228 @@
+
+
+SNYK:
+
+HIGH:
+
+1. Unsanitized input from the request URL [:696]
+ flows [:696, :696, :698, :698, :698, :699, :701, :701] 
+ into fs.readFileSync [:701], where it is used as a path. 
+ This may result in a Path Traversal vulnerability and allow 
+ an attacker to read arbitrary files.
+
+
+    Możliwe rozwiązania:
+
+        a)
+          return `/tmp/${path.parse(filename).base}`;
+          return `/tmp/${Date.now()}`;
+
+
+        b)
+          res.sendFile(dir + '/' + req.params.id);
+          // Test ok on winodws. Not sure that linux will be work ok.
+          res.sendFile((dir + '/' + req.params.id).replace(/\//g, '\\\\'));
+
+
+        c)
+
+            return `/tmp/${path.parse(filename).base}`;
+            return `/tmp/${Date.now()}`;
+            }
+            function convertLocalFile(localFilename, versionName) {
+            const cmd = getCmd(localFilename, versionName);
+            return execPromise(cmd);
+            }
+            function getCmd(localFilename, versionName) {
+            return `convert ${localFilename} -resize ${versionName}\\> ${localFilename}`;
+            }
+            function execPromise(cmd) {
+            return new Promise((resolve, reject) =>
+                exec(cmd, (error, stdout) => (error ? reject(error) : resolve(stdout)))
+            );
+            }
+            function getDestination(filename, versionName) {
+            const filenameParts = filename.split('/');
+            filenameParts[filenameParts.length - 2] = versionName;
+            return filenameParts.join('/');
+            }
+            function getFile(admin, filename) {
+            return admin
+                .storage()
+                .bucket()
+                .file(filename);
+            }
+            function unlinkPromise(localFilename) {
+            return new Promise(
+                (resolve, reject) => fs.unlink(localFilename, err => err && reject(err)) || resolve()
+
+
+
+MEDIUM:
+
+
+1. CSRF protection is disabled for your Express app [:12]. 
+   This allows the attackers to execute requests on a user's behalf.
+
+
+    Możliwe rozwiązanie:
+
+        a) 
+
+            const app = express();
+            const server = require('http').Server(app, {
+            transports: ['websocket', 'polling'],
+            });
+            const io = require('socket.io')(server, { pingTimeout: 60000 });
+            const cron = require('node-cron');
+            const swaggerUi = require('swagger-ui-express');
+            const swaggerDocument = require('./utils/swagger.json');
+            const db = require('./config/db.config');
+            const env = require('./config/env.config');
+            const Op = db.Sequelize.Op;
+            const cookieParser = require('cookie-parser');
+            const csrf = require('csurf');
+            app.use(bodyParser.urlencoded({ extended: true }));
+            app.use(bodyParser.json());
+            app.use(
+            bodyParser.json({
+                limit: '2000kb',
+            }),
+            );
+            app.disable('x-powered-by');
+            app.use(cors());
+            app.use(cookieParser());
+            app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header(
+                'Access-Control-Allow-Headers',
+                'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+            );
+            if (req.method === 'OPTIONS') {
+                res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+                return res.status(200).json({});
+            }
+            next();
+            });
+            app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+            app.use(morgan('dev'));
+            require('./routes/currency.route.js')(app);
+            app.use(csrf({ cookie: true }));
+
+
+    2. Disable X-Powered-By header for your Express app [:12] (consider using Helmet middleware), 
+       because it exposes information about the used framework to potential attackers.
+
+
+
+            Możliwe rozwiązanie:
+
+                a) 
+
+                    import helmet from 'helmet'
+                    import cookieParser from 'cookie-parser'
+                    import Aws from 'aws-sdk'
+                    import S3Router from 'react-s3-uploader/s3router'
+                    import debug from 'debug'
+                    import dotenv from 'dotenv'
+                    dotenv.config()
+                    const log = debug('server')
+                    const PORT = process.env.PORT_APP
+                    const DEV = process.env.NODE_ENV === 'development'
+                    let isBuilt = false
+                    Aws.config.update({
+                    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+                    })
+                    const app = express()
+                    app.use(helmet())
+
+
+    3. This endpoint handler [:681] performs a file system operation [:688] 
+       and does not use a rate-limiting mechanism. It may enable the attackers to perform 
+       Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
+
+
+            Możliwe rozwiązania:
+
+                a)
+
+                    const rateLimit = require('express-rate-limit')
+                    const crawl = require('./crawler')
+                    const parseHTML = require('./parser')
+                    const generateICS = require('./ics')
+                    const { genericErrorHandler, checkFBURL } = require('./middlewares')
+                    const port = process.env.PORT
+                    const app = express()
+                    app.set('view engine', 'ejs')
+                    app.set('views', path.join(__dirname, 'views'))
+                    app.use(express.static(path.join(__dirname, 'public')))
+                    app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+                    app.use(bodyParser())
+                    app.get('/', (req, res) => {
+                    res.render('index')
+                    })
+                    app.get('/error', (req, res) => {
+                    const error = req.error || req.query.error || ''
+                    res
+                        .status(500)
+                        .render('error', { error })
+                    })
+                    // NOTE: Capture all unkown URLs
+                    app.get('*', (req, res) => {
+                    res.status(400).render('404')
+                    })
+                    app.use('/download', checkFBURL)
+                    app.use('/download', rateLimit())
+
+
+
+
+
+ZAP:
+
+
+MEDIUM:
+
+    1. CSP (Content Security Policy): Wildcard Directive
+    2. CSP: script-src unsafe-inline
+    3. CSP: style-src unsafe-inline
+
+    4. Cookie: No HTTPonly Flag
+       Rozwiązanie:
+
+            An HttpOnly cookie means that it's not available to scripting languages like JavaScript. 
+            So in JavaScript, there's absolutely no API available to get/set the HttpOnly attribute of the cookie, 
+            as that would otherwise defeat the meaning of HttpOnly.
+            Just set it as such on the server side using whatever server side language the server side is using. 
+            If JavaScript is absolutely necessary for this, you could consider to just let it send some (ajax) 
+            request with e.g. some specific request parameter which triggers the server side language 
+            to create an HttpOnly cookie. But, that would still make it easy for hackers to change the HttpOnly 
+            by just XSS and still have access to the cookie via JS and thus make the HttpOnly on your 
+            cookie completely useless.
+
+            Ensure that the HttpOnly flag is set for all cookies (httpOnly: true)
+
+    5. Cookie without SameSite Attribute
+        Rozwiązanie:
+            Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.
+    
+
+
+    Rozwiązanie 4 i 5:
+
+        res.cookie('3pcookie', 'value', { sameSite: 'strict', secure: true, httpOnly: true });
+
+
+
+
+    6. Suspicious Comments
+    
+        Rozwiązanie:
+            Usunąć komentarze (opcjonalne)
+
+
+    7. Application Error Disclosure
+
+        Rozwiązanie:
+            Nie pokazywać użytkownikom błędów

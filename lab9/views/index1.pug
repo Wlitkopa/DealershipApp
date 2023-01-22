@@ -335,7 +335,6 @@ script.
           if (!response.ok)
               throw Error(response.statusText);
           if (response.headers.get("Content-Type") !== 'application/json') {
-              // If the received data is plain text or an XML document
         
               const result = response.text();
               async function getContent(){
@@ -486,13 +485,15 @@ script.
   }
 
 
+
+
   document.getElementsByName('user')[0]
     .addEventListener("keyup", function(event) {
     event.preventDefault();
+
     if (event.keyCode === 13) {
       console.log('Użytkownik: ' + document.getElementsByName('user')[0].value)
       sendData('user:' + document.getElementsByName('user')[0].value)
-
     }
     });
 
@@ -509,6 +510,8 @@ script.
   var logo = document.getElementById('canvas1')
   logo.addEventListener('dblclick', function(){
     console.log('Działa dblclick')
+    window.requestAnimationFrame(logoAnimation)
+
     let new_car_prompt = prompt("car   amount   sell_cost   rent_cost_per_day   img_url");
     sendData('add:' + new_car_prompt)
 
